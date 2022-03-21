@@ -52,8 +52,7 @@ class Tab:
         if self.downloading and self.done:
             return
         self.downloading = True
-        self.uitab.pause_btn.config(state="normal")
-        self.uitab.mp4_btn.config(state="disabled", text="Downloading...")
+        self.uitab.mp4_btn.config(text="Stop", command=self.stop)
         if self.downloaded > 0:
             percent = self.downloaded / self.size * 100
             self.uitab.percent_label.config(text=str(round(percent, 2)) + "%")
@@ -94,7 +93,6 @@ class Tab:
                     self.done = True
                     self.uitab.percent_label.config(text="DONE :)")
                     self.uitab.mp4_btn.destroy()
-                    self.uitab.pause_btn.destroy()
                     break
                 
                 if self.downloading:
@@ -112,7 +110,7 @@ class Tab:
     def stop(self):
         self.downloading = False
         try:
-            self.uitab.mp4_btn.config(state="normal", text="Continue...")
+            self.uitab.mp4_btn.config(text="Continue", command=self.mp4)
             self.uitab.percent_label.config(text="PAUSED")
         except:pass
 

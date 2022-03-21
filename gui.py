@@ -76,14 +76,12 @@ class TabFrame(LabelFrame):
         self.percent_label = Label(self, text="0%")
         self.progress_bar = Progressbar(self, orient=HORIZONTAL, length=200)
         self.mp4_btn = Button(self, text="Loading...", command=self.mp4, state="disabled")
-        self.pause_btn = Button(self, text="Stop", command=self.stop, state="disabled")
         self.close_btn = Button(self, text="Close", command=self.close)
 
         self.title_label.pack()
         self.percent_label.pack()
         self.progress_bar.pack()
         self.mp4_btn.pack()
-        self.pause_btn.pack()
         self.close_btn.pack()
 
     def mp4(self):
